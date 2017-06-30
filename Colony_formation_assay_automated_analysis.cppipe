@@ -1,0 +1,433 @@
+CellProfiler Pipeline: http://www.cellprofiler.org
+Version:3
+DateRevision:20160302210837
+GitHash:1b13225
+ModuleCount:25
+HasImagePlaneDetails:False
+
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    :
+    Filter images?:Images only
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
+
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Extract metadata?:Yes
+    Metadata data type:Text
+    Metadata types:{"Plate"\x3A "text", "FileLocation"\x3A "text", "Series"\x3A "text", "Frame"\x3A "text", "Well"\x3A "text", "Site"\x3A "text", "ChannelNumber"\x3A "text"}
+    Extraction method count:1
+    Metadata extraction method:Extract from file/folder names
+    Metadata source:File name
+    Regular expression:^(?P<Image_ID>.*)_01_(?P<channel>.*)_(?P<Ps_adjustment>.*).tif
+    Regular expression:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
+    Extract metadata from:All images
+    Select the filtering criteria:and (file does contain "")
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
+    Use case insensitive matching?:No
+
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:6|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Assign a name to:Images matching rules
+    Select the image type:Grayscale image
+    Name to assign these images:DNA
+    Match metadata:\x5B\x5D
+    Image set matching method:Order
+    Set intensity range from:Image metadata
+    Assignments count:2
+    Single images count:2
+    Maximum intensity:255.0
+    Select the rule criteria:and (file does contain "700")
+    Name to assign these images:Draq5Orig
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+    Select the rule criteria:and (file does contain "800")
+    Name to assign these images:TGM1Orig
+    Name to assign these objects:Nucleus
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+    Single image location:file\x3A///E\x3A/surfdrive/A_PhD/Data_2017/colony_formation_assay/JvBV167_compounds_PKIS/cell_profiler_analysis/input/0011155_01_700_re-exposed.tif   
+    Name to assign this image:Draq5Illum
+    Name to assign these objects:Cytoplasm
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain object outlines?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+    Single image location:file\x3A///E\x3A/surfdrive/A_PhD/Data_2017/colony_formation_assay/JvBV167_compounds_PKIS/cell_profiler_analysis/input/0011155_01_800_re-exposed.tif   
+    Name to assign this image:TGM1Illum
+    Name to assign these objects:Speckle
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain object outlines?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Do you want to group your images?:Yes
+    grouping metadata count:1
+    Metadata category:Image_ID
+
+RescaleIntensity:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:Draq5Orig
+    Name the output image:RescaledDraq5Orig
+    Rescaling method:Stretch each image to use the full intensity range
+    Method to calculate the minimum intensity:Custom
+    Method to calculate the maximum intensity:Custom
+    Lower intensity limit for the input image:0.0
+    Upper intensity limit for the input image:1.0
+    Intensity range for the input image:0.0,1.0
+    Intensity range for the output image:0.0,1.0
+    Method to rescale pixels below the lower limit:Mask pixels
+    Custom value for pixels below lower limit:0.0
+    Method to rescale pixels above the upper limit:Mask pixels
+    Custom value for pixels above upper limit:0.0
+    Select image to match in maximum intensity:None
+    Divisor value:1.0
+    Divisor measurement:None
+
+RescaleIntensity:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:TGM1Orig
+    Name the output image:RescaledTGM1Orig
+    Rescaling method:Stretch each image to use the full intensity range
+    Method to calculate the minimum intensity:Custom
+    Method to calculate the maximum intensity:Custom
+    Lower intensity limit for the input image:0.0
+    Upper intensity limit for the input image:1.0
+    Intensity range for the input image:0.0,1.0
+    Intensity range for the output image:0.0,1.0
+    Method to rescale pixels below the lower limit:Mask pixels
+    Custom value for pixels below lower limit:0.0
+    Method to rescale pixels above the upper limit:Mask pixels
+    Custom value for pixels above upper limit:0.0
+    Select image to match in maximum intensity:None
+    Divisor value:1.0
+    Divisor measurement:None
+
+Align:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the alignment method:Mutual Information
+    Crop mode:Crop to aligned region
+    Select the first input image:RescaledTGM1Orig
+    Name the first output image:AlignedTGM1Orig
+    Select the second input image:RescaledDraq5Orig
+    Name the second output image:AlignedDraq5Orig
+    Select the additional image:Draq5Illum
+    Name the output image:AlignedDraq5Illum
+    Select how the alignment is to be applied:Similarly
+    Select the additional image:TGM1Illum
+    Name the output image:AlignedTGM1Illum
+    Select how the alignment is to be applied:Similarly
+
+DefineGrid:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Name the grid:Grid_plate
+    Number of rows:2
+    Number of columns:3
+    Location of the first spot:Top left
+    Order of the spots:Rows
+    Define a grid for which cycle?:Once
+    Select the method to define the grid:Manual
+    Select the previously identified objects:None
+    Select the method to define the grid manually:Coordinates
+    Select the image to display:RescaledDraq5Orig
+    Coordinates of the first cell:264,242
+    Row number of the first cell:1
+    Column number of the first cell:1
+    Coordinates of the second cell:1182,704
+    Row number of the second cell:2
+    Column number of the second cell:3
+    Retain an image of the grid?:No
+    Name the output image:Grid
+    Select the image on which to display the grid:RescaledDraq5Orig
+    Use a previous grid if gridding fails?:No
+
+IdentifyObjectsInGrid:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the defined grid:Grid_plate
+    Name the objects to be identified:Grid_6wells
+    Select object shapes and locations:Circle Forced Location
+    Specify the circle diameter automatically?:Manual
+    Circle diameter:415
+    Select the guiding objects:None
+    Retain outlines of the identified objects?:No
+    Name the outline image:GridOutlines
+
+MaskImage:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:AlignedDraq5Orig
+    Name the output image:Aligned_Draq5Orig_masked
+    Use objects or an image as a mask?:Objects
+    Select object for mask:Grid_6wells
+    Select image for mask:None
+    Invert the mask?:No
+
+MaskImage:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:AlignedTGM1Orig
+    Name the output image:AlignedTGM1Orig_masked
+    Use objects or an image as a mask?:Objects
+    Select object for mask:Grid_6wells
+    Select image for mask:None
+    Invert the mask?:No
+
+CorrectIlluminationApply:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:Aligned_Draq5Orig_masked
+    Name the output image:Draq5Corr
+    Select the illumination function:AlignedDraq5Illum
+    Select how the illumination function is applied:Subtract
+    Select the input image:AlignedTGM1Orig_masked
+    Name the output image:TGM1Corr
+    Select the illumination function:AlignedTGM1Illum
+    Select how the illumination function is applied:Subtract
+
+IdentifyPrimaryObjects:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:10|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:Draq5Corr
+    Name the primary objects to be identified:ColoniesDraq5
+    Typical diameter of objects, in pixel units (Min,Max):7,120
+    Discard objects outside the diameter range?:Yes
+    Try to merge too small objects with nearby larger objects?:No
+    Discard objects touching the border of the image?:No
+    Method to distinguish clumped objects:Shape
+    Method to draw dividing lines between clumped objects:Shape
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:No
+    Name the outline image:PrimaryOutlines
+    Fill holes in identified objects?:After declumping only
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Retain outlines of the identified objects?:No
+    Automatically calculate the threshold using the Otsu method?:Yes
+    Enter Laplacian of Gaussian threshold:0.5
+    Automatically calculate the size of objects for the Laplacian of Gaussian filter?:Yes
+    Enter LoG filter diameter:5.0
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Threshold setting version:2
+    Threshold strategy:Global
+    Thresholding method:Otsu
+    Select the smoothing method for thresholding:Automatic
+    Threshold smoothing scale:1.0
+    Threshold correction factor:2
+    Lower and upper bounds on threshold:0.0,1.0
+    Approximate fraction of image covered by objects?:0.01
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Select binary image:Draq5Orig
+    Masking objects:None
+    Two-class or three-class thresholding?:Two classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
+    Method to calculate adaptive window size:Image size
+    Size of adaptive window:10
+    Use default parameters?:Default
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+
+SaveImages:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the type of image to save:Objects
+    Select the image to save:None
+    Select the objects to save:ColoniesDraq5
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:Draq5Orig
+    Enter single file name:OrigBlue
+    Number of digits:4
+    Append a suffix to the image file name?:Yes
+    Text to append to the image name:_recognized_colonies
+    Saved file format:tif
+    Output file location:Default Output Folder sub-folder\x7CRecognized_colonies
+    Image bit depth:8-bit integer
+    Overwrite existing files without warning?:No
+    When to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Color
+    Select colormap:Default
+    Record the file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+    Base image folder:Elsewhere...\x7C
+    Saved movie format:avi
+
+RelateObjects:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input child objects:ColoniesDraq5
+    Select the input parent objects:Grid_6wells
+    Calculate child-parent distances?:None
+    Calculate per-parent means for all child measurements?:No
+    Calculate distances to other parents?:No
+    Parent name:None
+
+MaskObjects:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select objects to be masked:Grid_6wells
+    Name the masked objects:Background
+    Mask using a region defined by other objects or by binary image?:Objects
+    Select the masking object:ColoniesDraq5
+    Select the masking image:None
+    Handling of objects that are partially masked:Keep overlapping region
+    Fraction of object that must overlap:0.5
+    Numbering of resulting objects:Renumber
+    Retain outlines of the resulting objects?:No
+    Name the outline image:MaskedOutlines
+    Invert the mask?:Yes
+
+MeasureObjectIntensity:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Hidden:2
+    Select an image to measure:Draq5Corr
+    Select an image to measure:TGM1Corr
+    Select objects to measure:ColoniesDraq5
+
+MeasureObjectSizeShape:[module_num:18|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select objects to measure:ColoniesDraq5
+    Calculate the Zernike features?:No
+
+DisplayDataOnImage:[module_num:19|svn_version:\'Unknown\'|variable_revision_number:6|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Display object or image measurements?:Object
+    Select the input objects:Grid_6wells
+    Measurement to display:Number_Object_Number
+    Select the image on which to display the measurements:Draq5Orig
+    Text color:blue
+    Name the output image that has the measurements displayed:Well_numbering
+    Font size (points):12
+    Number of decimals:2
+    Image elements to save:Image
+    Annotation offset (in pixels):0
+    Display mode:Text
+    Color map:Default
+    Display background image?:Yes
+    Color map scale:Use this image\'s measurement range
+    Color map range:0.0,1.0
+
+SaveImages:[module_num:20|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the type of image to save:Image
+    Select the image to save:Well_numbering
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:Draq5Orig
+    Enter single file name:OrigBlue
+    Number of digits:4
+    Append a suffix to the image file name?:Yes
+    Text to append to the image name:_annotated_wells_draq5
+    Saved file format:tif
+    Output file location:Default Output Folder sub-folder\x7Cwell_annotated
+    Image bit depth:8-bit integer
+    Overwrite existing files without warning?:No
+    When to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Record the file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+    Base image folder:Default Output Folder sub-folder\x7C
+    Saved movie format:avi
+
+ImageMath:[module_num:21|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Invert
+    Raise the power of the result by:1.0
+    Multiply the result by:1.0
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:Draq5_inverted_bw
+    Image or measurement?:Image
+    Select the first image:Draq5Corr
+    Multiply the first image by:1.0
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1.0
+    Measurement:
+
+ImageMath:[module_num:22|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Invert
+    Raise the power of the result by:1.0
+    Multiply the result by:1.0
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:TGM1_inverted_bw
+    Image or measurement?:Image
+    Select the first image:TGM1Corr
+    Multiply the first image by:1.0
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1.0
+    Measurement:
+
+SaveImages:[module_num:23|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the type of image to save:Image
+    Select the image to save:Draq5_inverted_bw
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:Draq5Orig
+    Enter single file name:OrigBlue
+    Number of digits:4
+    Append a suffix to the image file name?:Yes
+    Text to append to the image name:_inverted_bw
+    Saved file format:tif
+    Output file location:Default Output Folder sub-folder\x7Cinverted_BW
+    Image bit depth:8-bit integer
+    Overwrite existing files without warning?:No
+    When to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Record the file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+    Base image folder:Elsewhere...\x7C
+    Saved movie format:avi
+
+SaveImages:[module_num:24|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the type of image to save:Image
+    Select the image to save:TGM1_inverted_bw
+    Select the objects to save:None
+    Select the module display window to save:None
+    Select method for constructing file names:From image filename
+    Select image name for file prefix:TGM1Orig
+    Enter single file name:OrigBlue
+    Number of digits:4
+    Append a suffix to the image file name?:Yes
+    Text to append to the image name:_inverted_bw
+    Saved file format:tif
+    Output file location:Default Output Folder sub-folder\x7Cinverted_BW
+    Image bit depth:8-bit integer
+    Overwrite existing files without warning?:No
+    When to save:Every cycle
+    Rescale the images? :No
+    Save as grayscale or color image?:Grayscale
+    Select colormap:gray
+    Record the file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+    Base image folder:Elsewhere...\x7C
+    Saved movie format:avi
+
+ExportToSpreadsheet:[module_num:25|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the column delimiter:Comma (",")
+    Add image metadata columns to your object data file?:Yes
+    Limit output to a size that is allowed in Excel?:No
+    Select the measurements to export:No
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Output Folder\x7CE\x3A\\\\\\\\surfdrive\\\\\\\\A_PhD\\\\\\\\Data_2017\\\\\\\\colony_formation_assay\\\\\\\\JvBV166_AG1478_DMHI\\\\\\\\cell_profiler_analysis\\\\\\\\output
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurement types?:Yes
+    :
+    Representation of Nan/Inf:NaN
+    Add a prefix to file names?:Yes
+    Filename prefix:JvBV167_
+    Overwrite existing files without warning?:No
+    Data to export:Do not use
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes
